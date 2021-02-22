@@ -12,5 +12,6 @@ data class Result(
     val nat: String,
     val phone: String,
     val picture: Picture,
-    val registered: Registered
+    val registered: Registered,
+    var status : Boolean? = null
 )

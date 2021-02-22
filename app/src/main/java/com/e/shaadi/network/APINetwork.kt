@@ -20,7 +20,7 @@ val service: APINetwork by lazy {
         .addInterceptor(logging)
         .build()
     val retrofit = Retrofit.Builder()
-        .baseUrl("https://randomuser.me/api/")
+        .baseUrl("https://randomuser.me/")
         .client(okHttpClient)
         .addConverterFactory(GsonConverterFactory.create())
         .build()
@@ -31,6 +31,6 @@ val service: APINetwork by lazy {
 fun getNetworkService() = service
 
 interface APINetwork {
-    @GET
-    suspend fun getPhotos(@Query("results") count: String): Matches
+    @GET("api/")
+    suspend fun fetchMatches(@Query("results") count: Int): Matches
 }

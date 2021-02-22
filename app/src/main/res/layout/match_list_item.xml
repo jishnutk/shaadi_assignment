@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+        <variable
+            name="data"
+            type="com.e.shaadi.models.Result" />
+        <import type="android.view.View" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        app:cardCornerRadius="@dimen/corner_radious">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/margin_20dp">
+
+            <ImageView
+                android:id="@+id/img_dp"
+                setCircularImgUrl="@{data.picture.large}"
+                android:layout_width="@dimen/dp_size"
+                android:layout_height="@dimen/dp_size"
+                android:contentDescription="@string/user_image"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/txt_name"
+                style="@style/name_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_20dp"
+                android:text="@{data.name.name}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/img_dp"
+                tools:text="Shaadi" />
+
+            <TextView
+                android:id="@+id/txt_details"
+                style="@style/details_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_20dp"
+                android:gravity="center"
+                app:details="@{data}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_name"
+                tools:text="27, 5'8 Punjabi, Jat \n Ludhiana, India, MBA-Finance" />
+
+            <ImageView
+                android:id="@+id/img_decline"
+                android:layout_width="@dimen/decision_button_size"
+                android:layout_height="@dimen/decision_button_size"
+                android:layout_marginTop="@dimen/margin_20dp"
+                android:background="@drawable/ic_decline"
+                android:visibility="@{data.status == null ? View.VISIBLE : View.GONE}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/img_accept"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txt_details" />
+
+            <ImageView
+                android:id="@+id/img_accept"
+                android:layout_width="@dimen/decision_button_size"
+                android:layout_height="@dimen/decision_button_size"
+                android:layout_marginTop="@dimen/margin_20dp"
+                android:background="@drawable/ic_accept"
+                android:visibility="@{data.status == null ? View.VISIBLE : View.GONE}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/img_decline"
+                app:layout_constraintTop_toBottomOf="@id/txt_details" />
+
+            <TextView
+                android:id="@+id/txt_status"
+                style="@style/status_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_20dp"
+                android:gravity="center"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_details"
+                app:status="@{data}"
+                tools:text="Accepted" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>

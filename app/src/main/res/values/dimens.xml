@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="corner_radious">5dp</dimen>
+    <dimen name="dp_size">120dp</dimen>
+    <dimen name="margin_20dp">20dp</dimen>
+    <dimen name="font_size_large">25sp</dimen>
+    <dimen name="font_size_small">16sp</dimen>
+    <dimen name="font_size_medium">20sp</dimen>
+    <dimen name="decision_button_size">50dp</dimen>
+</resources>
