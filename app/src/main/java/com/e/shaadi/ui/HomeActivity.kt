@@ -2,7 +2,6 @@ package com.e.shaadi.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.e.shaadi.R
@@ -25,7 +24,7 @@ class HomeActivity : AppCompatActivity(), onClickHandler {
         viewModel = ViewModelProvider(this, ViewModelFactory(application, repository))
             .get(HomeViewModel::class.java)
         initView()
-        fetchData()
+        observeLiveData()
     }
 
     private fun initView() {
@@ -36,18 +35,23 @@ class HomeActivity : AppCompatActivity(), onClickHandler {
         matches_list.adapter = adapter
     }
 
-    private fun fetchData() {
-        viewModel.getMatches().observe(this, {
-            it.data?.let { data ->
+    private fun observeLiveData() {
+        viewModel.profiles.observe(this, {
+            if (it.data.isNullOrEmpty()) {
+                viewModel.getNewMatches()
+            } else {
+                val data = it.data
                 profileList = data
                 adapter.setData(data)
             }
         })
+        viewModel.fetchMatchesFromDb()
     }
 
     override fun onClickViewItem(data: Result, position: Int) {
         profileList[position] = data
         adapter.setData(profileList)
+        viewModel.updateProfile(data)
     }
 
 }

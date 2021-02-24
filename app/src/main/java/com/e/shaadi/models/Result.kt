@@ -1,9 +1,13 @@
 package com.e.shaadi.models
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity(tableName = "Profiles")
 data class Result(
     val cell: String,
     val dob: Dob,
-    val email: String,
+    @PrimaryKey val email: String,
     val gender: String,
     val id: Id,
     val location: Location,

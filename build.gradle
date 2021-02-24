@@ -18,7 +18,8 @@ buildscript {
         ext.recycler_view = '1.1.0'
         ext.circular_image_view = '1.1.0'
         ext.card_view = '1.0.0'
-        ext.activity_version = '1.0.0'
+        ext.activity_version = '1.2.0'
+        ext.room_version = '2.2.6'
     }
     repositories {
         google()
